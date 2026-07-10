@@ -1,1 +1,340 @@
-const audioCtx=new(window.AudioContext||window.webkitAudioContext);let isAutomatedNav=!1;function navigateTo(e,t){"undefined"!=typeof event&&event&&"click"===event.type&&(!isPlayingShow||isPaused||isAutomatedNav||pauseShow());const n=document.getElementById("tpl-"+e),i=n.getAttribute("data-title"),o=n.innerHTML,r=document.getElementById("content-area");document.getElementById("page-title").innerText=i,document.getElementById("page-body").innerHTML=o,window.scrollTo(0,0),r.classList.remove("fade-in"),r.offsetWidth,r.classList.add("fade-in");const s=audioCtx.createOscillator(),a=audioCtx.createGain();s.type="sine",s.frequency.setValueAtTime(t,audioCtx.currentTime),a.gain.setValueAtTime(.5,audioCtx.currentTime),a.gain.exponentialRampToValueAtTime(.01,audioCtx.currentTime+1.5),s.connect(a),a.connect(audioCtx.destination),s.start(),s.stop(audioCtx.currentTime+1.5)}navigateTo("home",261.63);const skillsData=[{t:"High-Performance Frontend",k:"HTML5 • CSS3 • JS (ES6+) • Bootstrap",d:"I build mobile-first, ultra-lightweight interfaces optimized for a perfect 100/100 Lighthouse score."},{t:"Scalable Backend & Data",k:"PHP (OOP) • MySQL",d:"Designing secure database architectures and fast server-side logic for complex product systems."},{t:"Product Design (UI/UX)",k:"Mid-level UI/UX • Canva",d:"I bridge the gap between abstract requirements and user-centric, high-conversion designs."},{t:"Search & Growth Strategy",k:"Technical SEO • Analytics",d:"Ensuring products are not just functional, but visible and optimized for organic growth."},{t:"Engineering Workflow",k:"Git • GitHub • AI-Augmented Dev",d:"High-velocity shipping using version control and modern AI engineering tools."},{t:"Product Communication",k:"CapCut Video Editing",d:"Creating technical demos and visual narratives to explain complex product features to stakeholders."}];function buildSkills(){document.getElementById("tpl-skills").content.getElementById("skills-target").innerHTML=skillsData.map(e=>`\n    <div class="impact-card">\n      <h3 class="impact-title">${e.t}</h3>\n      <div class="impact-tech">${e.k}</div>\n      <p class="impact-desc">${e.d}</p>\n    </div>\n  `).join("")}buildSkills();const workData=[{t:"Junior Developer (Frontend Lead)",d:"Feb 2026 – Present",p:["<strong>Frontend Leadership:</strong> Owning end-to-end logic for high-scale SaaS and Fintech solutions, ensuring modularity and seamless backend integration.","<strong>Performance Mastery:</strong> Pioneering AI-augmented workflows to reduce delivery cycles by 3x while maintaining 100/100 Lighthouse scores.","<strong>Product Synthesis:</strong> Bridging the gap between market research and engineering to ensure features solve real-world user pain points."],link:"YOUR_CERT_LINK_HERE"},{t:"Associate Developer",d:"Nov 2025 – Feb 2026",p:["<strong>System Architecture:</strong> Engineered optimized MySQL schemas and RESTful APIs, maintaining 100% data integrity for high-traffic platforms.",'<strong>Business Intelligence:</strong> Conducted data-driven research to align technical builds with user demand, moving from "coding" to "product building."',"<strong>Visual Logic:</strong> Designed high-fidelity UI prototypes, translating complex backend business logic into intuitive visual narratives."],link:"YOUR_CERT_LINK_HERE"},{t:"Full-Stack Intern",d:"Aug 2025 – Nov 2025",p:["<strong>Commercial Delivery:</strong> Shipped multiple e-commerce platforms using mobile-first, high-conversion layouts and responsive design patterns.","<strong>AI-Augmented Engineering:</strong> Integrated AI tools to automate boilerplate and audit security, increasing shipping velocity by 30%.","<strong>Reliability:</strong> Performed deep-dive PHP debugging to stabilize active client platforms and improve server-side performance."],link:"YOUR_CERT_LINK_HERE"},{t:"Technical Trainer",d:"May 2025 – Aug 2025",p:["<strong>The Foundation:</strong> Completed a 90-day technical immersion in modern web standards (HTML5/CSS3/ES6+), SEO, and Clean Code principles.","<strong>Agile Integration:</strong> Mastered lifecycle management and Scrum workflows, resulting in a promotion ahead of the standard cycle."],link:"https://drive.google.com/file/d/1GRY7pxfUWjMs31_XyduRALxJVZQEzrol/view?usp=sharing"}];function buildWork(){document.getElementById("tpl-work").content.getElementById("work-target").innerHTML=workData.map((e,t)=>`\n    <details class="role-group" name="experience" ${0===t?"open":""}>\n      <summary class="role-summary">\n        <span class="role-title">${e.t}</span>\n        <span class="role-date">${e.d}</span>\n      </summary>\n      <div class="role-content">\n        ${e.p.map(e=>`<p>${e}</p>`).join("")}\n        <a href="${e.link}" target="_blank" rel="noopener noreferrer" class="cert-link">\n          <svg class="cert-icon"><use href="#icon-certs"></use></svg> Verify Credential\n        </a>\n      </div>\n    </details>\n  `).join("")}buildWork();const projectsData=[{t:"Foodcher",d:"2026 - Q1",r:"Full-Stack Lead",link:"https://foodcher.com/",p:['<strong>Mission:</strong> Architected a "Smart Menu" system to digitize restaurant operations and automate order flow.',"<strong>Impact:</strong> Reduced ordering friction and improved customer retention through ultra-fast mobile interactions.","<strong>Logic:</strong> Integrated a high-performance frontend with a robust PHP/MySQL backend for real-time order syncing."]},{t:"Kanakku Agent",d:"2025 - Q4",r:"Full-Stack Architect",link:"#",p:["<strong>Mission:</strong> Developed a specialized financial ledger for local agents to record credit/debt transactions in high-volume environments.",'<strong>Impact:</strong> Optimized the user journey to allow a "Record-to-Save" flow in under 5 seconds.',"<strong>Logic:</strong> Designed a lightweight MySQL schema to ensure instant data retrieval even with thousands of active entries."]},{t:"Priya Prints",d:"2025 - Q4",r:"Frontend SEO Engineer",link:"https://www.priyaprints.shop/",p:["<strong>Mission:</strong> Engineered a high-conversion commercial landing page optimized strictly for organic search visibility.","<strong>Impact:</strong> Dominated local search rankings by implementing advanced technical SEO, structured data, and flawless Core Web Vitals.","<strong>Logic:</strong> Deployed a zero-dependency architecture (Pure HTML/CSS/JS) to guarantee millisecond load times and a perfect 100/100 Lighthouse score."]},{t:"Grocerzap",d:"2024 - Q3",r:"Lead Frontend Dev",link:"https://grocerzap.in/",p:["<strong>Mission:</strong> Built a mobile-first grocery delivery platform focused on SEO-optimized product discovery.","<strong>Impact:</strong> Achieved high organic rankings through semantic HTML and advanced asset optimization.","<strong>Logic:</strong> Focused on high-speed frontend delivery to ensure a smooth shopping experience on low-bandwidth networks."]},{t:"Legacy v1.0",d:"2023 - Q4",r:"Creative Developer",link:"https://sivakumarselvaraj2003.github.io/Personal-Portfolio/",p:["<strong>Mission:</strong> A deep-dive into complex browser animations and interactive storytelling.","<strong>Impact:</strong> Mastered GSAP and advanced CSS physics to create a visually immersive personal brand.","<strong>Philosophy:</strong> Represents my foundation in high-fidelity design, evolving into: High-Performance, Zero-Bloat Engineering."]}];function buildProjects(){document.getElementById("tpl-projects").content.getElementById("projects-target").innerHTML=projectsData.map(e=>`\n    <div class="folder-wrapper">\n      <div class="folder-tab">${e.d}</div>\n      <div class="folder-back">\n        <div class="folder-paper">\n          ${e.p.map(e=>`<p class="paper-text">${e}</p>`).join("")}\n        </div>\n      </div>\n      <div class="folder-front">\n        <h3 class="folder-title">${e.t}</h3>\n        <div class="folder-role">${e.r}</div>\n        <a href="${e.link}" target="_blank" class="folder-link">View Project</a>\n      </div>\n    </div>\n  `).join("")}buildProjects();const showScripts={home:"Hey, I'm Siva Kumar. As a Full-Stack Product Engineer, my core focus is shipping high-performance, zero-bloat web architectures that drive real business value. Let me walk you through my stack.",skills:"When it comes to my engineering DNA, I don't just write code—I build scalable systems. That means leveraging modern frontend frameworks, architecting robust backend logic, and integrating advanced technical SEO from day one.",work:"Looking at my recent track record at Noxlay, I scaled from Trainee to Frontend Lead in under nine months. I took full ownership of the UI architecture and drove performance optimizations across our entire product line.",projects:"Here are a few production shipments I'm particularly proud of. Whether it's an automated restaurant platform or a high-speed financial ledger, my approach is always the same: solve complex user friction with clean, maintainable logic.",certs:"In engineering, managers speak in KPIs. I back up my work with hard metrics. I'm talking about sub-35 kilobyte bundle sizes, perfect Lighthouse scores, and securing number-one organic Google rankings through semantic code.",contact:"If your team is looking for a developer who prioritizes speed, scale, and clean architecture, let's initialize a handshake. My direct lines are open right here. Thanks for taking the tour."},showSequence=[{id:"home",freq:261.63},{id:"skills",freq:293.66},{id:"work",freq:329.63},{id:"projects",freq:349.23},{id:"certs",freq:392},{id:"contact",freq:440}];let showTimeout,scrollReq,currentShowIndex=-1,isPlayingShow=!1,isPaused=!1,currentScrollStep=0,exactScrollY=0;function cinematicScroll(){if(!isPlayingShow||isPaused)return;const e=document.documentElement.scrollHeight-window.innerHeight;exactScrollY<e&&(exactScrollY+=currentScrollStep,window.scrollTo(0,exactScrollY),scrollReq=requestAnimationFrame(cinematicScroll))}function startShow(){isPlayingShow&&!isPaused||(isPaused?resumeShow():(isPlayingShow=!0,isPaused=!1,currentShowIndex=0,document.getElementById("show-controls").style.display="flex",document.getElementById("btn-play").style.display="none",document.getElementById("btn-pause").style.display="block",runShowStep()))}function runShowStep(){if(!isPlayingShow||currentShowIndex>=showSequence.length)return void restartShow();const e=showSequence[currentShowIndex],t=showScripts[e.id];isAutomatedNav=!0,navigateTo(e.id,e.freq),isAutomatedNav=!1,setTimeout(()=>{exactScrollY=0;const e=document.documentElement.scrollHeight-window.innerHeight,n=t.split(" ").length;currentScrollStep=e>0?e/(60*(n/2.3)):0,cancelAnimationFrame(scrollReq),cinematicScroll()},50),speakText(t,()=>{cancelAnimationFrame(scrollReq),isPlayingShow&&(currentShowIndex++,isPaused||(showTimeout=setTimeout(()=>{isPlayingShow&&!isPaused&&runShowStep()},1500)))})}function pauseShow(){isPlayingShow&&(isPaused=!0,window.speechSynthesis.pause(),clearTimeout(showTimeout),cancelAnimationFrame(scrollReq),document.getElementById("btn-play").style.display="block",document.getElementById("btn-pause").style.display="none")}function resumeShow(){if(!isPlayingShow)return;isPaused=!1,document.getElementById("btn-play").style.display="none",document.getElementById("btn-pause").style.display="block";const e=showSequence[currentShowIndex];isAutomatedNav=!0,navigateTo(e.id,e.freq),isAutomatedNav=!1,cinematicScroll(),window.speechSynthesis.paused?window.speechSynthesis.resume():runShowStep()}function restartShow(){isPlayingShow=!1,isPaused=!1,window.speechSynthesis.cancel(),clearTimeout(showTimeout),cancelAnimationFrame(scrollReq),document.getElementById("show-controls").style.display="none",isAutomatedNav=!0,navigateTo("home",261.63),isAutomatedNav=!1}function speakText(e,t){window.speechSynthesis.cancel();const n=new SpeechSynthesisUtterance(e);n.rate=.95,n.pitch=1,n.onend=function(){t&&t()},window.speechSynthesis.speak(n)}document.addEventListener("visibilitychange",()=>{document.hidden&&isPlayingShow&&!isPaused&&pauseShow()}),document.addEventListener("keydown",function(e){"Space"===e.code&&isPlayingShow&&(e.preventDefault(),isPaused?resumeShow():pauseShow())});const styleName="font-size: 20px; font-weight: bold; color: #ffffff; background: #111111; padding: 5px 10px; border-radius: 4px;",styleSize="font-size: 26px; font-weight: 900; background: #ff3333; color: #ffffff; padding: 15px 30px; border-radius: 6px; text-transform: uppercase; border: 2px solid #ffffff; line-height: 2;",styleContact="font-size: 16px; font-weight: bold; color: #00ff00; font-family: monospace; background: #111111; padding: 8px 12px; border-radius: 4px;";console.log("%c⚡ SIVA KUMAR | FULL-STACK PRODUCT ENGINEER",styleName),console.log("%cTHIS ENTIRE SITE IS ONLY 35KB.",styleSize),console.log("%c➜ INITIATE HANDSHAKE: siva4kumar2003@gmail.com",styleContact);
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let isAutomatedNav = !1;
+function navigateTo(e, t) {
+  "undefined" != typeof event &&
+    event &&
+    "click" === event.type &&
+    (!isPlayingShow || isPaused || isAutomatedNav || pauseShow());
+  const n = document.getElementById("tpl-" + e),
+    i = n.getAttribute("data-title"),
+    o = n.innerHTML,
+    r = document.getElementById("content-area");
+  ((document.getElementById("page-title").innerText = i),
+    (document.getElementById("page-body").innerHTML = o),
+    window.scrollTo(0, 0),
+    r.classList.remove("fade-in"),
+    r.offsetWidth,
+    r.classList.add("fade-in"));
+  const s = audioCtx.createOscillator(),
+    a = audioCtx.createGain();
+  ((s.type = "sine"),
+    s.frequency.setValueAtTime(t, audioCtx.currentTime),
+    a.gain.setValueAtTime(0.5, audioCtx.currentTime),
+    a.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5),
+    s.connect(a),
+    a.connect(audioCtx.destination),
+    s.start(),
+    s.stop(audioCtx.currentTime + 1.5));
+}
+navigateTo("home", 261.63);
+const skillsData = [
+  {
+    t: "High-Performance Frontend",
+    k: "HTML5 • CSS3 • JS (ES6+) • Bootstrap",
+    d: "I build mobile-first, ultra-lightweight interfaces optimized for a perfect 100/100 Lighthouse score.",
+  },
+  {
+    t: "Scalable Backend & Data",
+    k: "PHP (OOP) • MySQL",
+    d: "Designing secure database architectures and fast server-side logic for complex product systems.",
+  },
+  {
+    t: "Product Design (UI/UX)",
+    k: "Mid-level UI/UX • Canva",
+    d: "I bridge the gap between abstract requirements and user-centric, high-conversion designs.",
+  },
+  {
+    t: "Search & Growth Strategy",
+    k: "Technical SEO • Analytics",
+    d: "Ensuring products are not just functional, but visible and optimized for organic growth.",
+  },
+  {
+    t: "Engineering Workflow",
+    k: "Git • GitHub • AI-Augmented Dev",
+    d: "High-velocity shipping using version control and modern AI engineering tools.",
+  },
+  {
+    t: "Product Communication",
+    k: "CapCut Video Editing",
+    d: "Creating technical demos and visual narratives to explain complex product features to stakeholders.",
+  },
+];
+function buildSkills() {
+  document
+    .getElementById("tpl-skills")
+    .content.getElementById("skills-target").innerHTML = skillsData
+    .map(
+      (e) =>
+        `\n    <div class="impact-card">\n      <h3 class="impact-title">${e.t}</h3>\n      <div class="impact-tech">${e.k}</div>\n      <p class="impact-desc">${e.d}</p>\n    </div>\n  `,
+    )
+    .join("");
+}
+buildSkills();
+const workData = [
+  {
+    t: "Junior Developer (Frontend Lead)",
+    d: "Feb 2026 – Present",
+    p: [
+      "<strong>Frontend Leadership:</strong> Owning end-to-end logic for high-scale SaaS and Fintech solutions, ensuring modularity and seamless backend integration.",
+      "<strong>Performance Mastery:</strong> Pioneering AI-augmented workflows to reduce delivery cycles by 3x while maintaining 100/100 Lighthouse scores.",
+      "<strong>Product Synthesis:</strong> Bridging the gap between market research and engineering to ensure features solve real-world user pain points.",
+    ],
+    link: "YOUR_CERT_LINK_HERE",
+  },
+  {
+    t: "Associate Developer",
+    d: "Nov 2025 – Feb 2026",
+    p: [
+      "<strong>System Architecture:</strong> Engineered optimized MySQL schemas and RESTful APIs, maintaining 100% data integrity for high-traffic platforms.",
+      '<strong>Business Intelligence:</strong> Conducted data-driven research to align technical builds with user demand, moving from "coding" to "product building."',
+      "<strong>Visual Logic:</strong> Designed high-fidelity UI prototypes, translating complex backend business logic into intuitive visual narratives.",
+    ],
+    link: "YOUR_CERT_LINK_HERE",
+  },
+  {
+    t: "Full-Stack Intern",
+    d: "Aug 2025 – Nov 2025",
+    p: [
+      "<strong>Commercial Delivery:</strong> Shipped multiple e-commerce platforms using mobile-first, high-conversion layouts and responsive design patterns.",
+      "<strong>AI-Augmented Engineering:</strong> Integrated AI tools to automate boilerplate and audit security, increasing shipping velocity by 30%.",
+      "<strong>Reliability:</strong> Performed deep-dive PHP debugging to stabilize active client platforms and improve server-side performance.",
+    ],
+    link: "YOUR_CERT_LINK_HERE",
+  },
+  {
+    t: "Technical Trainer",
+    d: "May 2025 – Aug 2025",
+    p: [
+      "<strong>The Foundation:</strong> Completed a 90-day technical immersion in modern web standards (HTML5/CSS3/ES6+), SEO, and Clean Code principles.",
+      "<strong>Agile Integration:</strong> Mastered lifecycle management and Scrum workflows, resulting in a promotion ahead of the standard cycle.",
+    ],
+    link: "https://drive.google.com/file/d/1GRY7pxfUWjMs31_XyduRALxJVZQEzrol/view?usp=sharing",
+  },
+];
+function buildWork() {
+  document
+    .getElementById("tpl-work")
+    .content.getElementById("work-target").innerHTML = workData
+    .map(
+      (e, t) =>
+        `\n    <details class="role-group" name="experience" ${0 === t ? "open" : ""}>\n      <summary class="role-summary">\n        <span class="role-title">${e.t}</span>\n        <span class="role-date">${e.d}</span>\n      </summary>\n      <div class="role-content">\n        ${e.p.map((e) => `<p>${e}</p>`).join("")}\n        <a href="${e.link}" target="_blank" rel="noopener noreferrer" class="cert-link">\n          <svg class="cert-icon"><use href="#icon-certs"></use></svg> Verify Credential\n        </a>\n      </div>\n    </details>\n  `,
+    )
+    .join("");
+}
+buildWork();
+const projectsData = [
+  {
+    t: "DocuSight",
+    d: "2026 - Q3",
+    r: "AI Software Engineer",
+    link: "https://docusight-di8c.onrender.com/", // <-- Replace with your actual Render URL
+    p: [
+      "<strong>Mission:</strong> Engineered an enterprise-grade Retrieval-Augmented Generation (RAG) application to securely query and vocalize internal policy documents.",
+      "<strong>Impact:</strong> Eliminated AI hallucination risks by strictly isolating document embeddings in a Pinecone vector database, ensuring 100% context-accurate answers.",
+      "<strong>Logic:</strong> Integrated Google Gemini (Flash-Lite & TTS) with a custom Node.js backend and a high-performance, glassmorphic Vanilla JS frontend.",
+    ],
+  },
+  {
+    t: "Foodcher",
+    d: "2026 - Q1",
+    r: "Full-Stack Lead",
+    link: "https://foodcher.com/",
+    p: [
+      '<strong>Mission:</strong> Architected a "Smart Menu" system to digitize restaurant operations and automate order flow.',
+      "<strong>Impact:</strong> Reduced ordering friction and improved customer retention through ultra-fast mobile interactions.",
+      "<strong>Logic:</strong> Integrated a high-performance frontend with a robust PHP/MySQL backend for real-time order syncing.",
+    ],
+  },
+  {
+    t: "Kanakku Agent",
+    d: "2025 - Q4",
+    r: "Full-Stack Architect",
+    link: "#",
+    p: [
+      "<strong>Mission:</strong> Developed a specialized financial ledger for local agents to record credit/debt transactions in high-volume environments.",
+      '<strong>Impact:</strong> Optimized the user journey to allow a "Record-to-Save" flow in under 5 seconds.',
+      "<strong>Logic:</strong> Designed a lightweight MySQL schema to ensure instant data retrieval even with thousands of active entries.",
+    ],
+  },
+  {
+    t: "Priya Prints",
+    d: "2025 - Q4",
+    r: "Frontend SEO Engineer",
+    link: "https://www.priyaprints.shop/",
+    p: [
+      "<strong>Mission:</strong> Engineered a high-conversion commercial landing page optimized strictly for organic search visibility.",
+      "<strong>Impact:</strong> Dominated local search rankings by implementing advanced technical SEO, structured data, and flawless Core Web Vitals.",
+      "<strong>Logic:</strong> Deployed a zero-dependency architecture (Pure HTML/CSS/JS) to guarantee millisecond load times and a perfect 100/100 Lighthouse score.",
+    ],
+  },
+  {
+    t: "Grocerzap",
+    d: "2024 - Q3",
+    r: "Lead Frontend Dev",
+    link: "https://grocerzap.in/",
+    p: [
+      "<strong>Mission:</strong> Built a mobile-first grocery delivery platform focused on SEO-optimized product discovery.",
+      "<strong>Impact:</strong> Achieved high organic rankings through semantic HTML and advanced asset optimization.",
+      "<strong>Logic:</strong> Focused on high-speed frontend delivery to ensure a smooth shopping experience on low-bandwidth networks.",
+    ],
+  },
+  {
+    t: "Legacy v1.0",
+    d: "2023 - Q4",
+    r: "Creative Developer",
+    link: "https://sivakumarselvaraj2003.github.io/Personal-Portfolio/",
+    p: [
+      "<strong>Mission:</strong> A deep-dive into complex browser animations and interactive storytelling.",
+      "<strong>Impact:</strong> Mastered GSAP and advanced CSS physics to create a visually immersive personal brand.",
+      "<strong>Philosophy:</strong> Represents my foundation in high-fidelity design, evolving into: High-Performance, Zero-Bloat Engineering.",
+    ],
+  },
+];
+function buildProjects() {
+  document
+    .getElementById("tpl-projects")
+    .content.getElementById("projects-target").innerHTML = projectsData
+    .map(
+      (e) =>
+        `\n    <div class="folder-wrapper">\n      <div class="folder-tab">${e.d}</div>\n      <div class="folder-back">\n        <div class="folder-paper">\n          ${e.p.map((e) => `<p class="paper-text">${e}</p>`).join("")}\n        </div>\n      </div>\n      <div class="folder-front">\n        <h3 class="folder-title">${e.t}</h3>\n        <div class="folder-role">${e.r}</div>\n        <a href="${e.link}" target="_blank" class="folder-link">View Project</a>\n      </div>\n    </div>\n  `,
+    )
+    .join("");
+}
+buildProjects();
+const showScripts = {
+    home: "Hey, I'm Siva Kumar. As a Full-Stack Product Engineer, my core focus is shipping high-performance, zero-bloat web architectures that drive real business value. Let me walk you through my stack.",
+    skills:
+      "When it comes to my engineering DNA, I don't just write code—I build scalable systems. That means leveraging modern frontend frameworks, architecting robust backend logic, and integrating advanced technical SEO from day one.",
+    work: "Looking at my recent track record at Noxlay, I scaled from Trainee to Frontend Lead in under nine months. I took full ownership of the UI architecture and drove performance optimizations across our entire product line.",
+    projects:
+      "Here are a few production shipments I'm particularly proud of. Whether it's an automated restaurant platform or a high-speed financial ledger, my approach is always the same: solve complex user friction with clean, maintainable logic.",
+    certs:
+      "In engineering, managers speak in KPIs. I back up my work with hard metrics. I'm talking about sub-35 kilobyte bundle sizes, perfect Lighthouse scores, and securing number-one organic Google rankings through semantic code.",
+    contact:
+      "If your team is looking for a developer who prioritizes speed, scale, and clean architecture, let's initialize a handshake. My direct lines are open right here. Thanks for taking the tour.",
+  },
+  showSequence = [
+    { id: "home", freq: 261.63 },
+    { id: "skills", freq: 293.66 },
+    { id: "work", freq: 329.63 },
+    { id: "projects", freq: 349.23 },
+    { id: "certs", freq: 392 },
+    { id: "contact", freq: 440 },
+  ];
+let showTimeout,
+  scrollReq,
+  currentShowIndex = -1,
+  isPlayingShow = !1,
+  isPaused = !1,
+  currentScrollStep = 0,
+  exactScrollY = 0;
+function cinematicScroll() {
+  if (!isPlayingShow || isPaused) return;
+  const e = document.documentElement.scrollHeight - window.innerHeight;
+  exactScrollY < e &&
+    ((exactScrollY += currentScrollStep),
+    window.scrollTo(0, exactScrollY),
+    (scrollReq = requestAnimationFrame(cinematicScroll)));
+}
+function startShow() {
+  (isPlayingShow && !isPaused) ||
+    (isPaused
+      ? resumeShow()
+      : ((isPlayingShow = !0),
+        (isPaused = !1),
+        (currentShowIndex = 0),
+        (document.getElementById("show-controls").style.display = "flex"),
+        (document.getElementById("btn-play").style.display = "none"),
+        (document.getElementById("btn-pause").style.display = "block"),
+        runShowStep()));
+}
+function runShowStep() {
+  if (!isPlayingShow || currentShowIndex >= showSequence.length)
+    return void restartShow();
+  const e = showSequence[currentShowIndex],
+    t = showScripts[e.id];
+  ((isAutomatedNav = !0),
+    navigateTo(e.id, e.freq),
+    (isAutomatedNav = !1),
+    setTimeout(() => {
+      exactScrollY = 0;
+      const e = document.documentElement.scrollHeight - window.innerHeight,
+        n = t.split(" ").length;
+      ((currentScrollStep = e > 0 ? e / (60 * (n / 2.3)) : 0),
+        cancelAnimationFrame(scrollReq),
+        cinematicScroll());
+    }, 50),
+    speakText(t, () => {
+      (cancelAnimationFrame(scrollReq),
+        isPlayingShow &&
+          (currentShowIndex++,
+          isPaused ||
+            (showTimeout = setTimeout(() => {
+              isPlayingShow && !isPaused && runShowStep();
+            }, 1500))));
+    }));
+}
+function pauseShow() {
+  isPlayingShow &&
+    ((isPaused = !0),
+    window.speechSynthesis.pause(),
+    clearTimeout(showTimeout),
+    cancelAnimationFrame(scrollReq),
+    (document.getElementById("btn-play").style.display = "block"),
+    (document.getElementById("btn-pause").style.display = "none"));
+}
+function resumeShow() {
+  if (!isPlayingShow) return;
+  ((isPaused = !1),
+    (document.getElementById("btn-play").style.display = "none"),
+    (document.getElementById("btn-pause").style.display = "block"));
+  const e = showSequence[currentShowIndex];
+  ((isAutomatedNav = !0),
+    navigateTo(e.id, e.freq),
+    (isAutomatedNav = !1),
+    cinematicScroll(),
+    window.speechSynthesis.paused
+      ? window.speechSynthesis.resume()
+      : runShowStep());
+}
+function restartShow() {
+  ((isPlayingShow = !1),
+    (isPaused = !1),
+    window.speechSynthesis.cancel(),
+    clearTimeout(showTimeout),
+    cancelAnimationFrame(scrollReq),
+    (document.getElementById("show-controls").style.display = "none"),
+    (isAutomatedNav = !0),
+    navigateTo("home", 261.63),
+    (isAutomatedNav = !1));
+}
+function speakText(e, t) {
+  window.speechSynthesis.cancel();
+  const n = new SpeechSynthesisUtterance(e);
+  ((n.rate = 0.95),
+    (n.pitch = 1),
+    (n.onend = function () {
+      t && t();
+    }),
+    window.speechSynthesis.speak(n));
+}
+(document.addEventListener("visibilitychange", () => {
+  document.hidden && isPlayingShow && !isPaused && pauseShow();
+}),
+  document.addEventListener("keydown", function (e) {
+    "Space" === e.code &&
+      isPlayingShow &&
+      (e.preventDefault(), isPaused ? resumeShow() : pauseShow());
+  }));
+const styleName =
+    "font-size: 20px; font-weight: bold; color: #ffffff; background: #111111; padding: 5px 10px; border-radius: 4px;",
+  styleSize =
+    "font-size: 26px; font-weight: 900; background: #ff3333; color: #ffffff; padding: 15px 30px; border-radius: 6px; text-transform: uppercase; border: 2px solid #ffffff; line-height: 2;",
+  styleContact =
+    "font-size: 16px; font-weight: bold; color: #00ff00; font-family: monospace; background: #111111; padding: 8px 12px; border-radius: 4px;";
+(console.log("%c⚡ SIVA KUMAR | FULL-STACK PRODUCT ENGINEER", styleName),
+  console.log("%cTHIS ENTIRE SITE IS ONLY 35KB.", styleSize),
+  console.log(
+    "%c➜ INITIATE HANDSHAKE: siva4kumar2003@gmail.com",
+    styleContact,
+  ));
